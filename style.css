@@ -10,10 +10,63 @@
 	/*So I'm just defining both of them		*/
 	--darkgray: #383838;
 	--darkgrey: #383838;
+	--lightgray: #ABABAB;
+	--lightgray: #ABABAB;
 }
 
-ul.sidemenu{
 
+
+ul.topmenu{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 7%;
+	background-color: var(--color1);
+	position: fixed;
+	overflow: auto;
+
+	color: var(--darkgray);
+	background-color:var(--color1);
+}
+
+.topmenu li{
+	vertical-align: middle;
+	display: inline;
+	margin: 0px;
+	color: var(--darkgray);
+	background-color: var(--color1);
+}
+
+.topmenu a:not(.active){
+	vertical-align: middle;
+	padding: 10px;
+	font-size: 32px;
+	text-decoration: none;
+	display: inline;
+	color: inherit;
+	text-align: center;
+}
+
+.topmenu a:hover:not(.active){
+	background-color: var(--color3);
+	color: var(--color1);
+}
+
+
+.active{
+	vertical-align: middle;
+	padding: 10px;
+	font-size:32px;
+	text-decoration: none;
+	display: inline;
+	text-align: center;
+	color: var(--color1);
+	background-color: var(--darkgray);
+}
+
+
+ul.sidemenu{
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
@@ -23,6 +76,8 @@ ul.sidemenu{
 	position: fixed;
 	overflow: auto;
 }
+
+
 
 .sidemenu a{
 	padding: 10px;
