@@ -45,7 +45,7 @@
 				songs = shuffleArray(songs);
 				for(var i=0;i<songs.length;i++){
 							setTimeout(playSong, secondsToWait*1000, songs[i]);
-							secondsToWait+=bufferTime*2 + songs[i].secs;
+							secondsToWait+=bufferTime*1.5 + songs[i].secs;
 				}
 		}
 		</script>
