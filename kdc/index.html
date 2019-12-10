@@ -10,6 +10,19 @@
 					Song("Fancy", "https://youtu.be/F_giaTjHvg8?t=48", 41),
 					Song("Crown", "https://youtu.be/qjc23BuYQh8?t=55", 45),
 					Song("Dance The Night Away", "https://youtu.be/LfeyBKIggmY?t=45", 36),
+					Song("Yes Or Yes", "https://youtu.be/j5egSSBRRW0?t=63", 39),
+					Song("TT", "https://youtu.be/biniRo2gSgE?t=45", 45),
+					Song("Like Ohh-Ahh", "https://youtu.be/tkgYw_gS2k4?t=49", 37),
+					Song("Mr Mr", "https://youtu.be/WTlbuy8o2YY?t=37", 45),
+					Song("Very Nice", "https://youtu.be/oeClPI0Q0lI?t=31", 24),
+					Song("Pop/Stars", "https://youtu.be/UOxkGD8qRB4?t=46", 43),
+					Song("Red Flavor", "https://youtu.be/pq8bql4j8n8?t=38", 33),
+					Song("Mr Chu", "https://youtu.be/69Qi-uesblY?t=49", 36),
+					Song("Ring Ding Dong", "https://youtu.be/uIqhafyqToY?t=15", 17),
+					Song("Growl", "https://youtu.be/2U3vP-kO3Jg?t=45", 32),
+
+
+
 				];
 				return songs;
 			}
@@ -44,8 +57,9 @@
 				songs = setup();
 				songs = shuffleArray(songs);
 				for(var i=0;i<songs.length;i++){
+
 							setTimeout(playSong, secondsToWait*1000, songs[i]);
-							secondsToWait+=bufferTime*1.5 + songs[i].secs;
+							secondsToWait+=bufferTime*1.25 + songs[i].secs;
 				}
 		}
 		</script>
