@@ -7,24 +7,52 @@
 			var bufferTime = 2;
 			function setup(){
 				songs = [
+					/*SET 1*/
 					Song("Fancy", "https://youtu.be/F_giaTjHvg8?t=48", 41),
 					Song("Crown", "https://youtu.be/qjc23BuYQh8?t=55", 45),
 					Song("Dance The Night Away", "https://youtu.be/LfeyBKIggmY?t=45", 36),
-					Song("Yes Or Yes", "https://youtu.be/j5egSSBRRW0?t=63", 39),
+					Song("Yes Or Yes", "https://youtu.be/j5egSSBRRW0?t=63", 41),
 					Song("TT", "https://youtu.be/biniRo2gSgE?t=45", 45),
 					Song("Like Ohh-Ahh", "https://youtu.be/tkgYw_gS2k4?t=49", 37),
 					Song("Mr Mr", "https://youtu.be/WTlbuy8o2YY?t=37", 45),
-					Song("Very Nice", "https://youtu.be/oeClPI0Q0lI?t=31", 24),
-					Song("Pop/Stars", "https://youtu.be/UOxkGD8qRB4?t=46", 43),
-					Song("Red Flavor", "https://youtu.be/pq8bql4j8n8?t=38", 33),
-					Song("Mr Chu", "https://youtu.be/69Qi-uesblY?t=49", 36),
-					Song("Ring Ding Dong", "https://youtu.be/uIqhafyqToY?t=15", 17),
-					Song("Growl", "https://youtu.be/2U3vP-kO3Jg?t=45", 32),
-
-
-
+					Song("Very Nice", "https://youtu.be/oeClPI0Q0lI?t=31", 25),
+					Song("Pop/Stars", "https://youtu.be/UOxkGD8qRB4?t=46", 38),
+					Song("Red Flavor", "https://youtu.be/pq8bql4j8n8?t=38", 35),
+					Song("Mr Chu", "https://youtu.be/69Qi-uesblY?t=47", 38),
+					Song("Ring Ding Dong", "https://youtu.be/uIqhafyqToY?t=15", 20),
+					/*SET 2*/
+					Song("Growl", "https://youtu.be/2U3vP-kO3Jg?t=45", 33),
+					Song("Lip And Hip", "https://youtu.be/pvSukffbS98?t=40", 62),
+					Song("Hi High", "https://youtu.be/gSRFqpheg6Y?t=53", 32),
+					Song("Umpah Umpah", "https://youtu.be/wkilycLzQbY?t=40", 40),
+					Song("Wave", "https://youtu.be/DIpVecHOGkc?t=58", 34),
+					Song("Thanks", "https://youtu.be/6Ie9llP16og?t=65", 25),
+					Song("Catallena", "https://youtu.be/HxZvLRPF2j0?t=90", 35),
+					Song("Shine", "https://youtu.be/SvCj8aFOAE4?t=38", 39)
+					Song("TXT Run Away", "https://youtu.be/rqXOmyY5_y4?t=38", 48),
+					Song("What Is Love", "https://youtu.be/xt2toA_AeTw?t=30", 37),
+					Song("Peek A Boo", "https://youtu.be/KqnnRo6go2A?t=25", 43),
+					Song("Gee", "https://youtu.be/Ul6irPb8h44?t=50", 32)
 				];
 				return songs;
+			}
+
+			function setupSet2(){
+					songs=[
+						Song("Growl", "https://youtu.be/2U3vP-kO3Jg?t=45", 33),
+						Song("Lip And Hip", "https://youtu.be/pvSukffbS98?t=40", 62),
+						Song("Hi High", "https://youtu.be/gSRFqpheg6Y?t=53", 32),
+						Song("Umpah Umpah", "https://youtu.be/wkilycLzQbY?t=40", 40),
+						Song("Wave", "https://youtu.be/DIpVecHOGkc?t=58", 34),
+						Song("Thanks", "https://youtu.be/6Ie9llP16og?t=65", 25),
+						Song("Catallena", "https://youtu.be/HxZvLRPF2j0?t=90", 35),
+						Song("Shine", "https://youtu.be/SvCj8aFOAE4?t=38", 39)
+						Song("TXT Run Away", "https://youtu.be/rqXOmyY5_y4?t=38", 48),
+						Song("What Is Love", "https://youtu.be/xt2toA_AeTw?t=30", 37),
+						Song("Peek A Boo", "https://youtu.be/KqnnRo6go2A?t=25", 43),
+						Song("Gee", "https://youtu.be/Ul6irPb8h44?t=50", 32)
+					];
+
 			}
 
 			function Song(namex, linkx, secsx){
@@ -54,7 +82,7 @@
 			var songs;
 			function main(){
 				var secondsToWait = 1;
-				songs = setup();
+				songs = setupSet1();
 				songs = shuffleArray(songs);
 				for(var i=0;i<songs.length;i++){
 
@@ -66,5 +94,6 @@
 	</head>
 	<p>
 		<br/>
-		<button type="button" onclick="main()">Play A Song</button></p>
+		<button type="button" onclick="main(0)">Play All Songs</button></p>
+
 </html>
