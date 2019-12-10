@@ -28,7 +28,7 @@
 					Song("Wave", "https://youtu.be/DIpVecHOGkc?t=58", 34),
 					Song("Thanks", "https://youtu.be/6Ie9llP16og?t=65", 25),
 					Song("Catallena", "https://youtu.be/HxZvLRPF2j0?t=90", 35),
-					Song("Shine", "https://youtu.be/SvCj8aFOAE4?t=38", 39)
+					Song("Shine", "https://youtu.be/SvCj8aFOAE4?t=38", 39),
 					Song("TXT Run Away", "https://youtu.be/rqXOmyY5_y4?t=38", 48),
 					Song("What Is Love", "https://youtu.be/xt2toA_AeTw?t=30", 37),
 					Song("Peek A Boo", "https://youtu.be/KqnnRo6go2A?t=25", 43),
@@ -85,15 +85,12 @@
 				songs = setupSet1();
 				songs = shuffleArray(songs);
 				for(var i=0;i<songs.length;i++){
-
 							setTimeout(playSong, secondsToWait*1000, songs[i]);
 							secondsToWait+=bufferTime*1.25 + songs[i].secs;
 				}
 		}
 		</script>
 	</head>
-	<p>
-		<br/>
-		<button type="button" onclick="main()">Play All Songs</button></p>
+	<p><button type="button" onclick="main()">Play All Songs</button></p>
 
 </html>
