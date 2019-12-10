@@ -3,52 +3,54 @@
 	<head>
 		<script>
 
-			var songs;
 
+			var bufferTime = 2;
 			function setup(){
 				songs = [
-					Song("Fancy", "https://youtu.be/F_giaTjHvg8?t=48", 43.5),
+					Song("Fancy", "https://youtu.be/F_giaTjHvg8?t=48", 39),
 					Song("Crown", "https://youtu.be/qjc23BuYQh8?t=55", 45),
 					Song("Dance The Night Away", "https://youtu.be/LfeyBKIggmY?t=45", 36),
 				];
-
+				return songs;
 			}
 
-			function Song(name, link, secs){
-				var newsong;
-				newsong.name = name;
-				newsong.link = link;
-				newsong.secs = secs;
+			function Song(namex, linkx, secsx){
+				var newsong = {name: namex, link: linkx, secs: secsx};
 				return newsong;
 			}
 
 			function playSong(song){
-					setTimeout(function(){
-						newWindow = window.open(link);
-					}, 1000);
-					setTimeout(function(){
+				setTimeout(function(){
+						newWindow = window.open(song.link);
+				}, 1000);
+				setTimeout(function(){
 						newWindow.close();
-					}, secs*1000);
+				}, (song.secs+bufferTime)*1000);
 			}
 
 			//Uses Durstenfeld shuffle algorithm
-			function shuffleArray(){
-				for(var i=songs.length-1; i>0; i++){
+			function shuffleArray(songs){
+				for(var i=songs.length-1; i>0; i--){
 					var j = Math.floor(Math.random() * (i + 1));
 			 		var temp = songs[i];
 			 		songs[i] = songs[j];
 			 		songs[j] = temp;
 				}
+				return songs;
 			}
-
-			setup();
-			shuffleArray();
-			for(var i=0;i<songs.length;i++){
-				playSong(songs[i]);
-				setTimeout(function(){}, 500);
-			}
-
+			var songs;
+			function main(){
+				var secondsToWait = 1;
+				songs = setup();
+				songs = shuffleArray(songs);
+				for(var i=0;i<songs.length;i++){
+							setTimeout(playSong, secondsToWait*1000, songs[i]);
+							secondsToWait+=bufferTime*2 + songs[i].secs;
+				}
+		}
 		</script>
 	</head>
-	<p>This is mywork/kdc/index.html</p>
+	<p>
+		<br/>
+		<button type="button" onclick="main()">Play A Song</button></p>
 </html>
