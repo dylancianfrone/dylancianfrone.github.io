@@ -3,7 +3,7 @@
 	<head>
 		<script>
 
-
+			var started = false;
 			var bufferTime = 2;
 			function setup(){
 				songs = [
@@ -50,7 +50,16 @@
 				];
 				return songs;
 			}
-
+			
+			function DylanSetup(){
+				songs= [
+					Song("Crown", "https://youtu.be/qjc23BuYQh8?t=55", 45),
+					Song("Double Knot", "https://youtu.be/ACjsG5bOuAk?t=40", 42),
+					Song("TXT Run Away", "https://youtu.be/rqXOmyY5_y4?t=38", 48),
+					Song("Growl", "https://youtu.be/2U3vP-kO3Jg?t=45", 33)
+				];
+			}
+			
 			function setupSet2(){
 					songs=[
 						Song("Growl", "https://youtu.be/2U3vP-kO3Jg?t=45", 33),
@@ -95,6 +104,8 @@
 			}
 			var songs;
 			function main(){
+				if(!started){
+				started = true;
 				var secondsToWait = 1;
 				songs = setup();
 				songs = shuffleArray(songs);
@@ -102,9 +113,25 @@
 							setTimeout(playSong, secondsToWait*1000, songs[i]);
 							secondsToWait+=bufferTime*1.25 + songs[i].secs;
 				}
-		}
+				}
+			}
+			
+			function dylan(){
+				if(!started){
+					started=true;
+					var secondsToWait = 1;
+					songs = DylanSetup();
+					songs = shuffleArray(songs);
+					for(var i=0;i<songs.length;i++){
+						setTimeout(playSong, secondsToWait*1000, songs[i]);
+						secondsToWait+=bufferTime*1.25 + songs[i].secs;
+					}
+				}
+			}
 		</script>
-	</head>
+	</head>a
 	<p><button type="button" onclick="main()">Play All Songs</button></p>
+	<br/>
+	<p><button type="button" onclick="dylan()">Play Dylan's Mix</button></p>
 
 </html>
