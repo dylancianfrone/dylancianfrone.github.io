@@ -7,7 +7,7 @@
 			var bufferTime = 2;
 			function setup(){
 				songs = [
-					/*SET 1
+					/*SET 1*/
 					Song("Fancy", "https://youtu.be/F_giaTjHvg8?t=48", 41),
 					Song("Crown", "https://youtu.be/qjc23BuYQh8?t=55", 45),
 					Song("Dance The Night Away", "https://youtu.be/LfeyBKIggmY?t=45", 36),
@@ -20,7 +20,7 @@
 					Song("Red Flavor", "https://youtu.be/pq8bql4j8n8?t=38", 35),
 					Song("Mr Chu", "https://youtu.be/69Qi-uesblY?t=47", 38),
 					Song("Ring Ding Dong", "https://youtu.be/uIqhafyqToY?t=15", 20),
-					/*SET 2
+					/*SET 2*/
 					Song("Growl", "https://youtu.be/2U3vP-kO3Jg?t=45", 33),
 					Song("Lip And Hip", "https://youtu.be/pvSukffbS98?t=40", 62),
 					Song("Hi High", "https://youtu.be/gSRFqpheg6Y?t=53", 32),
@@ -34,16 +34,16 @@
 					Song("Peek A Boo", "https://youtu.be/KqnnRo6go2A?t=25", 45),
 					Song("Gee", "https://youtu.be/Ul6irPb8h44?t=50", 32),
 					/*SET 3*/
-					Song("Get Cool", "https://youtu.be/BcXwZEbOvpo?t=40", 38),
+					Song("Get Cool", "https://youtu.be/BcXwZEbOvpo?t=40", 41),
 					Song("MIROH", "https://youtu.be/IgaN3xyNnpw?t=61", 40),
-					Song("Double Knot", "https://youtu.be/ACjsG5bOuAk?t=40", 42),
-					Song("Side Effects", "https://youtu.be/qJXCbv9xscI?t=32", 29),
+					Song("Double Knot", "https://youtu.be/ACjsG5bOuAk?t=40", 44),
+					Song("Side Effects", "https://youtu.be/qJXCbv9xscI?t=32", 32),
 					Song("My Pace", "https://youtu.be/Ylzz-ocr6aQ?t=55", 33),
-					Song("Sorry Sorry", "https://youtu.be/AAWqnA8PdcY", 30),
-					Song("Russian Roulette", "https://youtu.be/ntqas3RIaF8?t=32", 40),
-					Song("Ddu-du Ddu-du", "https://youtu.be/k3Oq6weth3E?t=63", 30),
-					Song("Adios", "https://youtu.be/qfhWnJ9U1TI?t=38", 52),
-					Song("Icy", "https://youtu.be/LjfD9qMXCP0?t=42", 21),
+					Song("Sorry Sorry", "https://youtu.be/AAWqnA8PdcY?t=50", 40),
+					Song("Russian Roulette", "https://youtu.be/ntqas3RIaF8?t=32", 43),
+					Song("Ddu-du Ddu-du", "https://youtu.be/k3Oq6weth3E?t=63", 31),
+					Song("Adios", "https://youtu.be/qfhWnJ9U1TI?t=38", 54),
+					Song("Icy", "https://youtu.be/LjfD9qMXCP0?t=96", 50),
 					Song("Mr Simple", "https://youtu.be/1NuAW21pr7o?t=60", 38),
 					Song("Bubble Pop", "https://youtu.be/0TOaaiMct6Y?t=42", 45)
 					/*SET 4*/
@@ -102,18 +102,43 @@
 				}
 				return songs;
 			}
+			var curTab;
 			var songs;
+			var index = 0;
+			var paused = false;
+			var secsLeft = 0;
+			var interval;
+			function playSongs(){
+				if(secsLeft <= 0){
+					if(!paused){
+						playNextSong();
+					}
+				} else {
+					secsLeft--;	
+				}
+			}
+			
+			function playNextSong(){
+				curTab.close();
+				curTab = window.open(songs[index].link);
+				secsLeft = songs[index].secs;
+				index++;
+			}
+			
+			function stop(){
+				clearInterval(interval);
+			}
+			
+			function togglePause(){
+				paused = !paused;	
+			}
 			function main(){
 				if(!started){
 				started = true;
 				var secondsToWait = 1;
 				songs = setup();
 				songs = shuffleArray(songs);
-				for(var i=0;i<songs.length;i++){
-							setTimeout(playSong, secondsToWait*1000, songs[i]);
-							secondsToWait+=bufferTime*1.25 + songs[i].secs;
-				}
-				}
+				interval = setInterval(playSongs, 1000);
 			}
 			
 			function dylan(){
@@ -122,16 +147,19 @@
 					var secondsToWait = 1;
 					songs = DylanSetup();
 					songs = shuffleArray(songs);
-					for(var i=0;i<songs.length;i++){
-						setTimeout(playSong, secondsToWait*1000, songs[i]);
-						secondsToWait+=bufferTime*1.25 + songs[i].secs;
-					}
+					playSongs();
 				}
 			}
 		</script>
-	</head>a
+	</head>
 	<p><button type="button" onclick="main()">Play All Songs</button></p>
+	<p><button type="button" onclick="stop()">Stop</button></p>
+	<p><button type="button" onclick="playNextSong()">Skip Current Song</button></p>
+	<p><button type="button" onclick="togglePause()">Toggle Pause</button></p>
+	
+	
 	<br/>
+	<p>MIXES</p>
 	<p><button type="button" onclick="dylan()">Play Dylan's Mix</button></p>
 
 </html>
