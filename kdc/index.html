@@ -102,7 +102,7 @@
 				}
 				return songs;
 			}
-			var curTab = 0;
+			var curTab = null;
 			var songs;
 			var index = 0;
 			var paused = false;
@@ -112,6 +112,9 @@
 				if(secsLeft <= 0){
 					if(!paused){
 						playNextSong();
+					} else {
+						curTab.close();
+						curTab = null;
 					}
 				} else {
 					secsLeft--;	
