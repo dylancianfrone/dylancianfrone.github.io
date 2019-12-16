@@ -122,7 +122,7 @@
 			}
 			
 			function playNextSong(){
-				if(curTab != 0) curTab.close();
+				if(curTab != null) curTab.close();
 				curTab = window.open(songs[index].link);
 				secsLeft = songs[index].secs;
 				index++;
