@@ -129,9 +129,12 @@
 			}
 			
 			function stop(){
-				if(curTab != null) curTab.close();
-				clearInterval(interval);
-				started = false;
+				if(curTab != null){
+					curTab.close();
+					curTab = null;
+					clearInterval(interval);
+					started = false;
+				}
 			}
 			
 			function togglePause(){
