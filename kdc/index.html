@@ -132,13 +132,15 @@
 			function togglePause(){
 				paused = !paused;	
 			}
+			
 			function main(){
-				if(!started){
-				started = true;
-				var secondsToWait = 1;
-				songs = setup();
-				songs = shuffleArray(songs);
-				interval = setInterval(playSongs, 1000);
+					if(!started){
+					started = true;
+					var secondsToWait = 1;
+					songs = setup();
+					songs = shuffleArray(songs);
+					interval = setInterval(playSongs, 1000);
+				}
 			}
 			
 			function dylan(){
