@@ -129,6 +129,7 @@
 			}
 			
 			function stop(){
+				if(curTab != null) curTab.close();
 				clearInterval(interval);
 			}
 			
