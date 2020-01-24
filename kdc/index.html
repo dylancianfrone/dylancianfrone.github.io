@@ -95,12 +95,13 @@
 			}
 
 			function test(){
+				paused = false;
 				if(!started){
-					started=true;
+					started = true;
 					var secondsToWait = 1;
 					songs = testSetup();
 					songs = shuffleArray(songs);
-					playSongs();
+					interval = setInterval(playSongs, 1000);
 				}
 			}
 			
@@ -173,8 +174,8 @@
 			}
 			
 			function main(){
-					paused = false;
-					if(!started){
+				paused = false;
+				if(!started){
 					started = true;
 					var secondsToWait = 1;
 					songs = setup();
@@ -184,12 +185,13 @@
 			}
 			
 			function dylan(){
+				paused = false;
 				if(!started){
-					started=true;
+					started = true;
 					var secondsToWait = 1;
 					songs = DylanSetup();
 					songs = shuffleArray(songs);
-					playSongs();
+					interval = setInterval(playSongs, 1000);
 				}
 			}
 			
