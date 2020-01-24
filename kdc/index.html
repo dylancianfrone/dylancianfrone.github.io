@@ -136,12 +136,7 @@
 			var interval;
 			function playSongs(){
 				if(secsLeft <= 0){
-					if(!paused || paused){
-						playNextSong();
-					} else {
-						curTab.close();
-						curTab = null;
-					}
+					playNextSong();
 				} else {
 					secsLeft--;	
 				}
@@ -214,6 +209,6 @@
 	
 	<br/>
 	<p>MIXES</p>
-	<p><button class="button" type="bluebutton" onclick="dylan()">Play Dylan's Mix</button></p>
-	<p><button class="button" type="bluebutton" onclick="test()">Play Dylan's Mix</button></p>
+	<p><button type="button" class="bluebutton" onclick="dylan()">Play Dylan's Mix</button></p>
+	<p><button type="button" class="bluebutton" onclick="test()">Play Dylan's Mix</button></p>
 </html>
