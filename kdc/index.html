@@ -135,6 +135,8 @@
 			var secsLeft = 0;
 			var interval;
 			function playSongs(){
+				console.log(songs[index-1]);
+				console.log(secsLeft);
 				if(secsLeft <= 0){
 					playNextSong();
 				} else {
@@ -210,5 +212,5 @@
 	<br/>
 	<p>MIXES</p>
 	<p><button type="button" class="bluebutton" onclick="dylan()">Play Dylan's Mix</button></p>
-	<p><button type="button" class="bluebutton" onclick="test()">Play Dylan's Mix</button></p>
+	<p><button type="button" class="bluebutton" onclick="test()">Play Test Mix</button></p>
 </html>
