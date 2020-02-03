@@ -209,10 +209,33 @@
 				}
 			}
 			
+			function cutoff(list, num){
+				var remSecs = num*60;
+				var newList = [];
+				var index = 0;
+				//Improve later to get as close to num minutes as possible
+				while(remSecs > 0){
+					newList.push(list[index]);
+					remSecs -= list[index].secs;
+					index++;
+				}
+				return newList;
+			}
+			
+			function thirty(){
+				if(!started){
+					started = true;
+					songs = setup();
+					songs = shuffleArray(songs);
+					songs = cutoff(songs, 30);
+					interval = setInterval(playSongs, 1000);
+				}
+			}
 		</script>
 		<link rel="stylesheet" type="text/css" href=style.css>
 	</head>
 	<p><button class="bluebutton" type="button" onclick="main()">Play All Songs</button></p>
+	<p><button class="bluebutton" type="button" onclick="thirty()">Play 30 Minutes</button></p>
 	<p><button class="bluebutton" type="button" onclick="stop()">Stop</button></p>
 	<p><button class="bluebutton" type="button" onclick="playNextSong()">Skip Current Song</button></p>
 	
