@@ -179,8 +179,8 @@
 				if(curTab != null){
 					curTab.close();
 					curTab = null;
-					clearInterval(interval);
 					started = false;
+					clearInterval(interval);
 				}
 			}
 			
@@ -209,6 +209,7 @@
 			
 			function dylan(){
 				paused = false;
+				printf(started);
 				if(!started){
 					started = true;
 					var secondsToWait = 1;
@@ -218,7 +219,7 @@
 				}
 			}
 			
-			function cutoff(list, num){
+			function cutoffM(list, num){
 				var remSecs = num*60;
 				var newList = [];
 				var index = 0;
@@ -231,12 +232,31 @@
 				return newList;
 			}
 			
+			function cutoffN(list, num){
+				var newList = [];
+				for(var i=0;i<num;i++){
+					newList.push(list[i]);
+				}
+			}
+			
+			fun
+			
 			function thirty(){
 				if(!started){
 					started = true;
 					songs = setup();
 					songs = shuffleArray(songs);
-					songs = cutoff(songs, 30);
+					songs = cutoffM(songs, 30);
+					interval = setInterval(playSongs, 1000);
+				}
+			}
+			
+			function twentyfive(){
+				if(!started){
+					started = true;
+					songs = setup();
+					songs = shuffleArray(songs);
+					songs = cutoffN(songs, 25);
 					interval = setInterval(playSongs, 1000);
 				}
 			}
@@ -246,6 +266,7 @@
 	<p>**Most recent additions: Answer, Movie Star, Numb, Hit, Pretty U, You Calling My Name, +Updated Dope**<p>
 	<p><button class="bluebutton" type="button" onclick="main()">Play All Songs</button></p>
 	<p><button class="bluebutton" type="button" onclick="thirty()">Play 30 Minutes</button></p>
+	<p><button class="bluebutton" type="button" onclick="twentyfive()">Play 25 Songs</button></p>
 	<p><button class="bluebutton" type="button" onclick="stop()">Stop</button></p>
 	<p><button class="bluebutton" type="button" onclick="playNextSong()">Skip Current Song</button></p>
 	<p><button class="bluebutton" type="button", onclick="window.open('https://forms.gle/QV8XYMhzaprsjjGj9');">Suggest A Song</button></p>
