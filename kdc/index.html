@@ -4,7 +4,7 @@
 		<script>
 
 			var started = false;
-			var bufferTime = 2;
+			var bufferTime = 4;
 			function setup(){
 				songs = [
 					/*SET 1*/
@@ -24,7 +24,7 @@
 					Song("Growl", "https://youtu.be/2U3vP-kO3Jg?t=45", 33),
 					Song("Lip And Hip", "https://youtu.be/pvSukffbS98?t=40", 62),
 					Song("Hi High", "https://youtu.be/gSRFqpheg6Y?t=53", 32),
-					Song("Umpah Umpah", "https://youtu.be/wkilycLzQbY?t=40", 40),
+					Song("Umpah Umpah", "https://youtu.be/wkilycLzQbY?t=40", 42),
 					Song("Wave", "https://youtu.be/DIpVecHOGkc?t=58", 34),
 					Song("Thanks", "https://youtu.be/6Ie9llP16og?t=65", 25),
 					Song("Catallena", "https://youtu.be/HxZvLRPF2j0?t=90", 35),
@@ -50,28 +50,38 @@
 					Song("Signal", "https://youtu.be/VQtonf1fv_s?t=90", 42),
 					Song("Snapping", "https://youtu.be/195tL4wrhsk?t=18", 65),
 					Song("Into the New World", "https://youtu.be/eXpFtXD-rZ8?t=74", 46),
-					Song("Zimzalabim", "https://youtu.be/TIJSsEVBbr4?t=105", 30),
+					Song("Zimzalabim", "https://youtu.be/TIJSsEVBbr4?t=100", 35),
 					Song("Bon Bon Chocolat", "https://youtu.be/BWKbQX09rFU?t=33", 45),
 					Song("Black Dress", "https://youtu.be/q3IEs2khur8?t=49", 24),
 					Song("Shoot Out", "https://youtu.be/shhK3AWG5aw?t=67", 42),
-					Song("Boom", "https://youtu.be/-GcXYImOZA4?t=56", 25), 
+					Song("Boom", "https://youtu.be/-GcXYImOZA4?t=56", 27), 
 					Song("Obsession", "https://youtu.be/aCjGMPdwPj0?t=40", 25),
 					Song("Psycho", "https://youtu.be/Z7yNvMzz2zg?t=49", 36), 
 					Song("Baby Don't Stop", "https://youtu.be/xqfQ77ZCbW4?t=30", 22),
 					Song("Gashina", "https://youtu.be/-PigwfGvE2s?t=42", 30), 
 					/*SET 5*/
 					Song("Move", "https://youtu.be/bs4Vk6iCoeU?t=36", 35),
-					Song("Idol", "https://youtu.be/AqCM-7JYoDo?t=53", 37),
+					Song("Idol", "https://youtu.be/AqCM-7JYoDo?t=53", 39),
 					Song("Tempo", "https://youtu.be/zPSehSneHow?t=10", 32),
 					Song("Mic Drop", "https://youtu.be/eEuBEdCZejQ?t=73", 47),
 					Song("Boy With Luv", "https://youtu.be/PW7lTLP64SI?t=46", 54),
-					Song("Dope", "https://youtu.be/BVwAVbKYYeM?t=34", 27),
+					Song("Dope", "https://youtu.be/BVwAVbKYYeM?t=96", 42),
 					Song("Dalla Dalla", "https://youtu.be/ay97L0DAu9A?t=44", 56),
-					Song("Crazy", "https://youtu.be/6GTDMp3WLC4?t=57", 33),
+					Song("Crazy", "https://youtu.be/6GTDMp3WLC4?t=57", 35),
 					Song("I'm So Hot", "https://youtu.be/7DPp5QKtEzY?t=52", 33), 
 					Song("Bboom Bboom Momoland", "https://youtu.be/wg6Spft72ps?t=60", 40),
-					Song("Feel Special", "https://youtu.be/TN3iOWVPHq4?t=30", 48)
-					//Add another song
+					Song("Feel Special", "https://youtu.be/TN3iOWVPHq4?t=30", 50),
+					Song("Flower Shower", "https://youtu.be/JTq4iFvxyFI?t=44", 30),
+					/*SET 6*/
+					Song("Answer", "https://youtu.be/pxmlXKZ1xn8?t=40", 60), 
+					Song("Movie Star", "https://youtu.be/NsSjFG5C2Mo?t=36", 28), 
+					Song("Numb", "https://youtu.be/qv6Lcl2Wr0E?t=56", 28), 
+					Song("You Callin My Name", "https://youtu.be/bIlgdwaR1aM?t=45", 25),  
+					Song("Hit", "https://youtu.be/nqlCXaIxxZQ?t=52", 37), 
+					Song("Pretty U", "https://youtu.be/t_PSdEnJjSA?t=47", 39), 
+					Song("Getting Closer", "https://youtu.be/rrAfjsmgifI?t=43", 31), 
+					Song("Kill This Love", "https://youtu.be/BRUYjbeSj-M?t=122", 66),
+					Song("Dun Dun", "https://youtu.be/5ylB9nFrJVk?t=42", 37)
 				];
 				return songs;
 			}
@@ -79,11 +89,18 @@
 			function DylanSetup(){
 				songs= [
 					Song("Crown", "https://youtu.be/qjc23BuYQh8?t=55", 45),
-					Song("Double Knot", "https://youtu.be/ACjsG5bOuAk?t=40", 42),
+					Song("Double Knot", "https://youtu.be/ACjsG5bOuAk?t=40", 44),
 					Song("TXT Run Away", "https://youtu.be/rqXOmyY5_y4?t=38", 48),
 					Song("Growl", "https://youtu.be/2U3vP-kO3Jg?t=45", 33),
-					Song("MIROH", "https://youtu.be/IgaN3xyNnpw?t=61", 40)
+					Song("Side Effects", "https://youtu.be/qJXCbv9xscI?t=32", 32),
+					Song("MIROH", "https://youtu.be/IgaN3xyNnpw?t=61", 40),
+					Song("Getting Closer", "https://youtu.be/rrAfjsmgifI?t=43", 31),
+					Song("Angel Or Devil", "https://youtu.be/XspoB4C1Uqs?t=48", 47),
+					Song("Fire", "https://youtu.be/V2xdOBZ_heg?t=43", 46),
+					Song("Cat And Dog", "https://youtu.be/saDl8eAaDkM?t=64", 34), 
+					Song("Crown Full", "https://www.youtube.com/watch?v=qjc23BuYQh8", 35)
 				];
+				return songs;
 			}
 			
 			function testSetup(){
@@ -170,8 +187,8 @@
 				if(curTab != null){
 					curTab.close();
 					curTab = null;
-					clearInterval(interval);
 					started = false;
+					clearInterval(interval);
 				}
 			}
 			
@@ -209,7 +226,7 @@
 				}
 			}
 			
-			function cutoff(list, num){
+			function cutoffM(list, num){
 				var remSecs = num*60;
 				var newList = [];
 				var index = 0;
@@ -222,23 +239,45 @@
 				return newList;
 			}
 			
+			function cutoffN(list, num){
+				var newList = [];
+				for(var i=0;i<num;i++){
+					newList.push(list[i]);
+				}
+			}
+			
+			
+			
 			function thirty(){
 				if(!started){
 					started = true;
 					songs = setup();
 					songs = shuffleArray(songs);
-					songs = cutoff(songs, 30);
+					songs = cutoffM(songs, 30);
+					interval = setInterval(playSongs, 1000);
+				}
+			}
+			
+			function twentyfive(){
+				if(!started){
+					started = true;
+					songs = setup();
+					songs = shuffleArray(songs);
+					songs = cutoffN(songs, 25);
 					interval = setInterval(playSongs, 1000);
 				}
 			}
 		</script>
 		<link rel="stylesheet" type="text/css" href=style.css>
 	</head>
+	<p>**Most recent additions: Kill This Love (+Dance Break), Getting Closer, Dun Dun<p>
 	<p><button class="bluebutton" type="button" onclick="main()">Play All Songs</button></p>
 	<p><button class="bluebutton" type="button" onclick="thirty()">Play 30 Minutes</button></p>
+	<p><button class="bluebutton" type="button" onclick="twentyfive()">Play 25 Songs</button></p>
 	<p><button class="bluebutton" type="button" onclick="stop()">Stop</button></p>
 	<p><button class="bluebutton" type="button" onclick="playNextSong()">Skip Current Song</button></p>
-	
+	<p><button class="bluebutton" type="button", onclick="window.open('https://forms.gle/QV8XYMhzaprsjjGj9');">Suggest A Song</button></p>
+	<p><button class="bluebutton" type="button", onclick="window.open('https://forms.gle/sEjPCAxsjK3UjRbs6');">Suggest A Feature</button></p>
 	<p>To pause a song, you have to pause the video on YouTube (to stop the video)
 	<br/>and also press the pause button on here so that the tab doesn't close.
 	<br/>Once you want to continue on with more songs, press the unpause button.
