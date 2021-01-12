@@ -13,14 +13,27 @@ html{
 	background-color: var(--offwhite);
 }
 .header{
-	display: block;
-	height: 55%;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	height: 35vh;
+	width: 100%;
 	background-color: var(--darkblue);
 	color: var(--offwhite);
 	margin: 0;
-	padding: 10%;
-}
 
+}
+.headerText{
+	display:block;
+	vertical-align: center;
+	padding-right: 50%;
+}
+img{
+	vertical-align: center;
+	float: left;
+	margin-right: 2%;
+	margin-left: 2%;
+}
 .footer{
 	text-align: right;
 	display: inline-block;
@@ -39,11 +52,16 @@ html{
 
 
 .header h1{
-	text-align: center;
+	text-align: left;
 }
 .header h3{
-	text-align: center;
+	text-align: left;
 }
+
+.header p{
+	text-align: left;
+}
+
 .projects{
 	height:auto;
 	float: left;
@@ -70,6 +88,23 @@ html{
 	margin-top: 15px;
 	list-style-type: none;
 }
+.element a:link,
+.element a:visited{
+	color: var(--green);
+}
+.element2{
+	color: var(--offwhite);
+	font-size: 2vh;
+	background-color: var(--charcoal);
+	padding: 15px;
+	margin-top: 15px;
+	list-style-type: none;
+}
+.element2 a:link,
+.element2 a:visited{
+	color: var(--honeydew);
+}
+
 li{
 	list-style-type: none;
 }
@@ -92,7 +127,7 @@ li:before{
 	display: flex;
 	text-align: left;
 	font-size: 2vh;
-	background-color: var(--charcoal);
+	background-color: var(--darkgray);
 	margin: 0px;
 	width: 75%;
 	height: 100%;
