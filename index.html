@@ -1,28 +1,175 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta name = "Homepage" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href=style.css>		
+	<meta name = "Homepage" content="width=device-width, initial-scale=1" charset="utf-8">
+	<link rel="stylesheet" type="text/css" href=style.css>
 </head>
 <body>
 
-<ul class="topmenu">
-	<li class="topmenu"><a class="active" href="index.html">Home</a></li>
-	<li class="topmenu"><a href="about.html">About Me</a></li>
-	<li class="topmenu"><a href="resume.html">My Resume</a></li>
-	<li class="topmenu"><a href="contact.html">Contact Me</a></li>
-	<li class="topmenu"><a href="projects.html">My Projects</a></li>
-</ul>
-
-<br/>
-<br/>
-<br/>
+<div class="header">
+	<h1>Dylan Cianfrone</h1>
+	<h3>Welcome to my homepage.</h3>
+</div>
 <br/>
 
-<h1>This is the homepage for Dylan Cianfrone's github.</h1>
-<br/>
-<p>Hi, I'm Dylan Cianfrone. This is my personal website! <br/>
-Unfortunately, I can't put schoolwork on here because of a potential honor code violation</p>
+<div class="projects">
+	<div class="subheader">
+		<h1>What I'm Working On</h1>
+		<hr>
+		<h4>Here's a look into what I spend my time on.</g4h>
+	</div>
+	<div class="element" id="schoolwork">
+		<h2>Schoolwork</h2>
+		<h5>Right now, I'm putting most of my focus into my schoolwork. Here's some information on my classes.</h5>
+		<hr>
+		<p>
+			At the end of 2020, I was accepted into GMU's Accelerated Master's degree program and began taking my first graduate-
+			level classes. I finished my BS in Applied Computer Science with a concentration in Computer Video Game Design in Fall
+			2020, so currently in Spring 2021 I've moved on to being a full-time graduate student. By the end of 2021, I should
+			finish my Master's Degree in Computer Science. My focus for my graduate studies will be in Artificial Intelligence, with
+			a smaller focus on Software Engineering. For Spring 2020, I'll be taking the following classes: Advanced Artificial Intelligence,
+			Database Systems, Object Oriented Software Specification and Construction and Principles in Data Management and Mining.
+		</p>
+	</div>
+	<div class="element" id="hunger_games">
+		<h2>Hunger Games Discord Bot</h2>
+		<h5>
+			Inspired by the fantastic <a href="https://brantsteele.net/hungergames/disclaimer.php">Hunger Games Simulator</a>
+			made by Brant Steele, I'm currently working on a discord bot to take this idea even further.
+		</h5>
+		<hr>
+		<p>
+			My main project right now centers around creating a discord bot which will take users from a Discord server and
+			simulate a random Hunger Games scenario with them. This project is my way to learn several different concepts at once,
+			like basic database usage through MongoDB, lots of practice with Python, and experience the workflow of developing a
+			large-scale project on my own start-to-finish.
+			<br/><br/>
+			Right now, the project is in a very basic prototype stage, but does run and play a super-basic version of the Games.
+			The next step in development will be creating the functionality for different types of events, and then writing a bunch
+			of different events which will be randomly chosen from to make the experience fresh each time.
+			The database is working, but I haven't gotten to a stage where other people are helping me test, so there isn't very
+			much populating it. However, this project is my main focus other than school stuff, so I'm hoping to get more progress
+			soon! - Github repository <a href="https://github.com/dylancianfrone/hunger_games">here</a>.
+		</p>
+	</div>
+	<div class="element" id="rdp">
+		<h2>Automated Random Dance Play for GMU KDC</h2>
+		<h5>A small website made to help out my student organization at GMU.</h5>
+		<hr>
+		<p>
+			This was a small project that I put together to help out my school club, the GMU Kpop Dance Club. Random dance
+			play videos are a big part of Kpop Dance culture as well as some of our club meetings. It centers around choruses
+			to popular songs playing, and anyone who knows the choreography for those songs jumps in and dances to them. Our
+			club was running into a problem where it was hard to find Random Dance Play videos online with songs that many people
+			in club knew, which made it hard for everyone to be engaged and have a good time.
+			<br/><br/>
+			This bot pulls from a list of songs I curated, randomly shuffles them, and then for each song, opens a new tab to the
+			YouTube video timestamped to the chorus of the song, waits an amount of time I determined for the chorus to last, and then closes the tab. This project
+			is sitting on the backburner at the moment, since it's been a long time since our club was able to meet in person and
+			actually use it. However, I do have ideas about how to improve it, so it's entirely possible that I'll come back and
+			update it someday soon. - Github repository <a href="https://github.com/dylancianfrone/dylancianfrone.github.io/tree/master/kdc">here</a>,
+			website <a href="https://dylancianfrone.github.io/kdc/">here</a>
+		</p>
+	</div>
+	<div class="element" id="spotify">
+		<h2>Spotify Ranking System</h2>
+		<h5>This project will pull artist information from Spotify and let users rank their favorite songs.</h5>
+		<hr>
+		<p>
+			This project was inspired by a trend in the Kpop community where users would rank the discography of
+			their favorite artists and share their results on Twitter to compare them with other fans. The problem I
+			noticed was that every website made to rank songs, had to have each song by the artist manually added to a
+			list before users could use it.
+			<br/><br/>
+			When this project is finished, a user will be able to find an artist or playlist on Spotify, and sort the songs
+			by that artist or in that playlist from best to worst by one-by-one choosing between pairs of songs. Then, users
+			will be able to share their results with others quickly and easily. This project is still in very early stages at
+			the moment, but I'm using it as an opportunity to learn Node.js and more advanced web design. - Github repository
+			<a href="https://github.com/dylancianfrone/dylancianfrone.github.io/tree/master/spotifyproject">here.</a>
+		</p>
+	</div>
+</div>
+<div class="other">
+	<div class="subheader">
+		<h1>About Me</h1>
+		<hr>
+		<h4>Some more stuff you might want to know.</h4>
+	</div>
+	<div class="element" id="contact">
+		<h2>Contact Me</h2>
+		<hr>
+		<p>
+			<b>Email:</b> dylancianfrone@gmail.com<br/>
+			<b>Phone: </b>908-510-3444<br/>
+			<b>Github: </b><a href="https://github.com/dylancianfrone">dylancianfrone</a>
+		</p>
+	</div>
+	<div class="element" id="languages">
+		<h2>Programming Languages</h2>
+		<hr>
+		<p>
+			<div class="skillbar">
+				<div class="lvl" style="width:85%"><span class="vert">Java</span>
+				</div>
+			</div>
+			<div class="skillbar">
+				<div class="lvl" style="width:75%"><span class="vert">Python</span>
+				</div>
+			</div>
+			<div class="skillbar">
+				<div class="lvl" style="width:70%"><span class="vert">JavaScript</span>
+				</div>
+			</div>
+			<div class="skillbar">
+				<div class="lvl" style="width:65%"><span class="vert">C++</span>
+				</div>
+			</div>
+			<div class="skillbar">
+				<div class="lvl" style="width:55%"><span class="vert">C</span>
+				</div>
+			</div>
+			<br/><br/>
+			Highly proficient in Java, Python. Proficient in JavaScript, C++, C.
+		</p>
+	</div>
+	<div class="element" id="skills">
+		<h2>Other Skills</h2>
+		<hr>
+			<ul>
+				<li>Very comfortable with working in a team and communicating with others</li>
+				<li>Strong communication with people of other skillsets, disciplines, and backgrounds</li>
+				<li>Experienced with Microsoft Suite and bash</li>
+				<li>Reliable and flexible</li>
+			</ul>
+	</div>
+<!--	<div class="element" id="work">
+		<h2>Work Experience</h2>
+		<hr>
+		<p>
+			<b>Peer Mentor</b> at George Mason University, Volgenau School of Engineering<br/>
+			<i>October 2018-December 2020</i>
+			<ul>
+				<li>Tutor college students in 100 through 300 level courses</li>
+				<li>Create a welcoming environment for students of many disciplines and backgrounds</li>
+				<li>Communicate with various students with different needs and communication styles</li>
+				<li>Keep a strong working knowledge of past coursework</li>
+			</ul>
+		</p>
+	</div> <-->
+	<div class="element" id="coursework">
+		<h2>Relevant Coursework</h2>
+		<ul>
+			<li><b>CS580</b> Intro Artificial Intelligence</li>
+			<li><b>CS583</b> Analysis of Algorithms</li>
+			<li><b>CS310</b> Data Structures</li>
+			<li><b>CS321</b> Software Engineering</li>
+			<li><b>CS425/426</b> Game Programming I/II</li>
+		</ul>
+	</div>
+</div>
 
+<div class="footer">
+	<span class="footerText"><p>Created 2021 by Dylan Cianfrone for my personal use only.</p></span>
+</div>
 </body>
 </html>
