@@ -21,6 +21,10 @@
   padding: 1vh;
 }
 
+.selector_button{
+  margin-right: 5px;
+  display: inline-block;
+}
 /*THIS CODE IS FROM MY CS321 PROJECT*/
 /*I added these in in case we wanted to change the colors for some contrast.
 But, I'm not sure what colors to make them so they're both black for now.*/
