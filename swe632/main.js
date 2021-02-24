@@ -42,6 +42,7 @@ function swapToDetails(){
   (document.getElementById('main_right')).style.display = 'none';
   (document.getElementById('details_left')).style.display = 'block';
   (document.getElementById('details_right')).style.display = 'block';
+  spendingInfo.innerHTML = calculatePercentages(purchases);
 }
 function swapToMain(){
   (document.getElementById('main_left')).style.display = 'block';
