@@ -5,14 +5,10 @@
   </head>
   <body>
     <div class="col left" id="main_left">
-      <div class="box" style="height:34vh" id="budget_window">
-        <h1>Remaining Budget: </h1>
-        <h2 id="remaining_budget">$100.00</h2>
-        <h3 id="total_budget">Total budget: $100.00</h3>
-        <h3 id="amount_spent">Amount spent: $0.00</h3>
-      </div>
-      <div class="box" style="height:55vh" id="input_window">
-        <h1>Enter Purchase:</h1>
+
+      <div class="box" style="height:60vh" id="input_window">
+        <h1>New Purchase:</h1>
+        <h5>Cost must not be blank. All other fields are optional. Negatives are allowed.</h5>
         <form id="new_purchase">
           <label for="vendor">Vendor:<br></label><input type="text" id="vendor" name="vendor"><br>
           <label for="cost">Cost:<br></label><input type="text" id="cost" name="cost"><br>
@@ -21,21 +17,48 @@
         </form>
         <br>
         <button id="purchaseSubmit">Submit</button>
-        <br>
+        <h5 class="error" id="form_error"><br></h5>
         <h1>Edit Budget:</h1>
         <form id="edit_budget">
           <label for="budget">New Budget:<br></label><input type="text" id="budget" name="budget"><br>
         </form>
         <br>
         <button id="budgetSubmit">Submit</button>
+        <h5 class="error" id="budget_error"><br></h5>
+      </div>
+
+      <div class="box" style="height:29vh" id="budget_window">
+        <h1>Remaining Budget: </h1>
+        <h2 id="remaining_budget">$100.00</h2>
+        <h3 id="total_budget">Total budget: $100.00</h3>
+        <h3 id="amount_spent">Amount spent: $0.00</h3>
+      </div>
+    </div>
+
+    <div class="col left" style="display:none;" id="details_left">
+      <!-- <div class="box" style="height:34vh;display:inline-block;text-align:center" id="sorting_window">
+        <h1>Sort Your List</h1>
+          <button id="time_button" class="selector_button">Time</button>
+          <button id="vendor_button" class="selector_button">Vendor</button>
+          <button id="cost_button" class="selector_button">Cost</button>
+          <button id="category_button" class="selector_button">Category</button>
+      </div> -->
+      <div class="box" style="height:93vh;text-align:center" id="details_window">
+          <h1>Your Spending Information</h1>
+          <p id="spending_info"></p>
       </div>
     </div>
     <div class="col right" id="main_right">
       <div class="box" style="height: 93vh" id="list_window_1">
         <h1 style='width:80%;display:inline-block;height:6vh'>Your Purchase List</h1>
         <button id="detailsPage" style="height:6vh;width:18%">Details</button>
+        <h5 style="display:inline-block"> Sort by: </h5>
+        <button id="time_button_main" class="selector_button">Time</button>
+        <button id="vendor_button_main" class="selector_button">Vendor</button>
+        <button id="cost_button_main" class="selector_button">Cost</button>
+        <button id="category_button_main" class="selector_button">Category</button>
         <div class="table_scroll">
-          <table id="purchasesField" style="width:85%"></table>
+          <table id="purchasesField" style="width:85%"><tr><th>Vendor</th><th>Cost</th><th>Category</th><th>Description</th></tr></table>
           <form style="display: none" action="details.html" method="GET" id="detailsPageForm">
             <input type="hidden" id="purchases" name="purchases" value=""/>
             <input type="hidden" id="budget" name="budget" value=""/>
@@ -45,23 +68,8 @@
         </div>
       </div>
     </div>
-    <div class="col left" style="display:none;width:60%" id="details_left">
-      <div class="box" style="height:34vh;display:inline-block;width:60%;text-align:center" id="sorting_window">
-        <h1>Sort Your List</h1>
-          <button id="cost_button" class="selector_button">Cost</button>
-          <button id="category_button" class="selector_button">Category</button>
-          <button id="vendor_button" class="selector_button">Vendor</button>
-      </div>
-      <button id="mainPage" style="float:right;width:35%;height:10vh;font-size:4vh">Back to Main</button>
-      <div class="box" style="height:55vh" id="list_window_2">
-        <table id="sorted_purchasesField">hello</table>
-      </div>
-    </div>
-    <div class="col right" style="display:none;width:35%" id="details_right">
-      <div class="box" style="height:93vh;text-align:center" id="details_window">
-        <h1>Your Spending Information</h1>
-        <p id="spending_info"></p>
-      </div>
+    <div class="col right" style="display:none;" id="details_right">
+
     </div>
     <script src="main.js"></script>
   </body>

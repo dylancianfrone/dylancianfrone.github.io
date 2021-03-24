@@ -25,18 +25,6 @@
   margin-right: 5px;
   display: inline-block;
 }
-
-.error{
-  color: #550000
-}
-
-.success{
-  color: #005500
-}
-
-.overBudget{
-  color: #660000
-}
 /*THIS CODE IS FROM MY CS321 PROJECT*/
 /*I added these in in case we wanted to change the colors for some contrast.
 But, I'm not sure what colors to make them so they're both black for now.*/
@@ -44,8 +32,8 @@ tr:nth-child(even){
   color: black;
 }
 .table_scroll{
-  width: 100%;
-  height: 75%;
+  width: 70%;
+  height: 53vh;
   overflow-y: auto;
 }
 tr:nth-child(odd){

@@ -5,10 +5,21 @@ listField = document.getElementById('purchasesField');
 remainingBudgetField = document.getElementById('remaining_budget');
 totalBudgetField = document.getElementById('total_budget');
 amountSpentField = document.getElementById('amount_spent');
-
+formError = document.getElementById("form_error")
+budgetError = document.getElementById("budget_error")
 detailsForm = document.getElementById('detailsPageForm');
-
 purchaseButton = document.getElementById('purchaseSubmit');
+spendingInfo = document.getElementById('spending_info');
+timeSort = document.getElementById('time_button');
+costSort = document.getElementById('cost_button');
+categorySort = document.getElementById('category_button');
+vendorSort = document.getElementById('vendor_button');
+timeSortMain = document.getElementById('time_button_main');
+vendorSortMain = document.getElementById('vendor_button_main');
+costSortMain = document.getElementById('cost_button_main');
+categorySortMain = document.getElementById('category_button_main');
+sortedPurchasesField = document.getElementById('sorted_purchasesField');
+detailsButton = document.getElementById('detailsPage');
 purchaseButton.onclick = function(){
 form = document.getElementById("new_purchase");
 vendor = form.elements[0].value;
@@ -16,12 +27,38 @@ cost = form.elements[1].value;
 category = form.elements[2].value;
 description = form.elements[3].value;
 cost = parseFloat(cost);
+budgetChanged = 0
+formChanged = 0
+curSort = "time"
+timeSortMain.style.fontWeight = 'bold'
 if(!isNaN(cost)){
-    purchases.push(Purchase(vendor, cost, category, description))
-    listField.innerHTML=buildTable(purchases);
+    addPurchase(Purchase(vendor, cost, category, description))
+    if(timeSortMain.style.fontWeight == 'bold') listField.innerHTML=buildTable(purchases);
+    else if(costSortMain.style.fontWeight == 'bold') listField.innerHTML = buildTable(getSorted(sortByCost));
+    else if(categorySortMain.style.fontWeight == 'bold') listField.innerHTML = buildTable(getSorted(sortByCategory));
+    else if(vendorSortMain.style.fontWeight == 'bold') listField.innerHTML = buildTable(getSorted(sortByVendor));
     amountSpent+=cost;
     amountSpentField.innerHTML = "Amount spent: $"+Math.abs(amountSpent).toFixed(2);
-    remainingBudgetField.innerHTML = "$"+Math.abs((totalBudget-amountSpent)).toFixed(2);
+    if(totalBudget-amountSpent < 0){
+      remainingBudgetField.classList.add("overBudget")
+      remainingBudgetField.innerHTML = "$"+Math.abs((totalBudget-amountSpent)).toFixed(2)+" over budget.";
+    } else {
+      if(remainingBudgetField.classList.contains("overBudget")) remainingBudgetField.classList.remove("overBudget")
+      remainingBudgetField.innerHTML = "$"+Math.abs((totalBudget-amountSpent)).toFixed(2);
+    }
+} else {
+    formError.innerHTML = "Error: Cost must be a number. Try again."
+    console.log("hi")
+    formChanged+=1
+
+    setTimeout(function(){
+      if(formChanged == 1){
+        formError.innerHTML = "<br>"
+        formChanged = 0
+      } else {
+        formChanged-=1
+      }
+    }, 5000)
 }
 }
 
@@ -32,28 +69,82 @@ purchaseButton.onclick = function(){
   if(!isNaN(new_budget)){
     totalBudget = new_budget;
     amountSpentField.innerHTML = "Amount spent: $"+amountSpent.toFixed(2);
-    remainingBudgetField.innerHTML = "$"+Math.abs((totalBudget-amountSpent)).toFixed(2);
+
+    if(totalBudget-amountSpent < 0){
+      remainingBudgetField.classList.add("overBudget")
+      remainingBudgetField.innerHTML = "$"+Math.abs((totalBudget-amountSpent)).toFixed(2)+" over budget.";
+    } else {
+      if(remainingBudgetField.classList.contains("overBudget")) remainingBudgetField.classList.remove("overBudget")
+      remainingBudgetField.innerHTML = "$"+Math.abs((totalBudget-amountSpent)).toFixed(2);
+    }
     totalBudgetField.innerHTML = "Total budget: $"+Math.abs(totalBudget).toFixed(2);
+    budgetError.classList.remove("error")
+    budgetError.classList.add("success")
+    budgetError.innerHTML = "Budget successfully updated!"
+  } else {
+    budgetError.classList.remove("success")
+    budgetError.classList.add("error")
+    budgetError.innerHTML = "Error: Budget must be a number. Try again."
+    setTimeout(function(){
+        budgetError.innerHTML = "<br>"
+      }, 5000)
   }
 }
+costSortMain.onclick = function(){
+  purchasesField.innerHTML=buildTable(getSorted(sortByCost));
+  costSortMain.style.fontWeight = 'bold'
+  vendorSortMain.style.fontWeight = 'normal'
+  categorySortMain.style.fontWeight= 'normal'
+  timeSortMain.style.fontWeight = 'normal'
+  curSort = "cost"
+}
+vendorSortMain.onclick = function(){
+  costSortMain.style.fontWeight = 'normal'
+  vendorSortMain.style.fontWeight = 'bold'
+  categorySortMain.style.fontWeight= 'normal'
+  timeSortMain.style.fontWeight = 'normal'
+  purchasesField.innerHTML=buildTable(getSorted(sortByVendor));
+  curSort = "vendor"
+}
+categorySortMain.onclick = function(){
+  costSortMain.style.fontWeight = 'normal'
+  vendorSortMain.style.fontWeight = 'normal'
+  categorySortMain.style.fontWeight= 'bold'
+  timeSortMain.style.fontWeight = 'normal'
+  purchasesField.innerHTML=buildTable(getSorted(sortByCategory));
+  curSort = "category"
+}
+timeSortMain.onclick = function(){
+  costSortMain.style.fontWeight = 'normal'
+  vendorSortMain.style.fontWeight = 'normal'
+  timeSortMain.style.fontWeight = 'bold'
+  categorySortMain.style.fontWeight= 'normal'
+  purchasesField.innerHTML=buildTable(purchases);
+  curSort = "time"
+}
+
 
 function swapToDetails(){
   (document.getElementById('main_left')).style.display = 'none';
   (document.getElementById('main_right')).style.display = 'none';
   (document.getElementById('details_left')).style.display = 'block';
-  (document.getElementById('details_right')).style.display = 'block';
+  (document.getElementById('main_right')).style.display = 'block';
+  //(document.getElementById('details_right')).style.display = 'block';
   spendingInfo.innerHTML = calculatePercentages(purchases);
+  detailsButton.onclick = swapToMain;
+  detailsButton.innerHTML = "Back to Main"
 }
 function swapToMain(){
   (document.getElementById('main_left')).style.display = 'block';
   (document.getElementById('main_right')).style.display = 'block';
   (document.getElementById('details_left')).style.display = 'none';
   (document.getElementById('details_right')).style.display = 'none';
+  detailsButton.onclick = swapToDetails;
+  detailsButton.innerHTML = "Details"
 }
 
-detailsButton = document.getElementById('detailsPage');
+
 detailsButton.onclick = function(){
-  console.log("HEY")
   swapToDetails();
 }
 
@@ -62,7 +153,10 @@ mainPageButton.onclick = function(){
   swapToMain();
 }
 
-sortedPurchasesField = document.getElementById('sorted_purchasesField');
+function addPurchase(purchase){
+  purchase.button = "<button onclick=\"removePurchase("+purchases.length+")\">Remove</button>"
+  purchases.push(purchase)
+}
 
 function sortByCost(p1, p2){
   if(p1.cost < p2.cost) return -1;
@@ -101,35 +195,36 @@ function getSorted(sortFunction){
   return sorted;
 }
 
-costSort = document.getElementById('cost_button');
-categorySort = document.getElementById('category_button');
-vendorSort = document.getElementById('vendor_button');
 
-costSort.onclick = function(){
-  sortedPurchasesField.innerHTML=buildTable(getSorted(sortByCost));
-  costSort.style.fontWeight = 'bold'
-  vendorSort.style.fontWeight = 'normal'
-  categorySort.style.fontWeight= 'normal'
-}
-vendorSort.onclick = function(){
-  costSort.style.fontWeight = 'normal'
-  vendorSort.style.fontWeight = 'bold'
-  categorySort.style.fontWeight= 'normal'
-  sortedPurchasesField.innerHTML=buildTable(getSorted(sortByVendor));
-}
-categorySort.onclick = function(){
-  costSort.style.fontWeight = 'normal'
-  vendorSort.style.fontWeight = 'normal'
-  categorySort.style.fontWeight= 'bold'
-  sortedPurchasesField.innerHTML=buildTable(getSorted(sortByCategory));
-}
-sortedPurchasesField.innerHTML=buildTable(getSorted(sortByCost));
-costSort.style.fontWeight = 'bold'
+
 
 spendingInfo = document.getElementById('spending_info');
 spendingInfo.innerHTML = calculatePercentages(purchases);
 console.log("done")
 /*THIS CODE TAKEN FROM MY CS321 PROJECT*/
+
+function removePurchase(index){
+  removed = null
+  if(index < purchases.length) removed = purchases.splice(index, 1)
+  amountSpent-=removed[0].cost
+  amountSpentField.innerHTML = "Amount spent: $"+amountSpent.toFixed(2);
+
+  if(totalBudget-amountSpent < 0){
+    remainingBudgetField.classList.add("overBudget")
+    remainingBudgetField.innerHTML = "$"+Math.abs((totalBudget-amountSpent)).toFixed(2)+" over budget.";
+  } else {
+    if(remainingBudgetField.classList.contains("overBudget")) remainingBudgetField.classList.remove("overBudget")
+    remainingBudgetField.innerHTML = "$"+Math.abs((totalBudget-amountSpent)).toFixed(2);
+  }
+  totalBudgetField.innerHTML = "Total budget: $"+Math.abs(totalBudget).toFixed(2);
+  for(i=0;i<purchases.length;i++){
+    purchases[i].button = "<button onclick=\"removePurchase("+i+")\">Remove</button>"
+  }
+  if(timeSortMain.style.fontWeight == 'bold') listField.innerHTML=buildTable(purchases);
+  else if(costSortMain.style.fontWeight == 'bold') listField.innerHTML = buildTable(getSorted(sortByCost));
+  else if(categorySortMain.style.fontWeight == 'bold') listField.innerHTML = buildTable(getSorted(sortByCategory));
+  else if(vendorSortMain.style.fontWeight == 'bold') listField.innerHTML = buildTable(getSorted(sortByVendor));
+}
 
 function calculatePercentages(purchases){
   if(purchases.length == 0) return "Make a purchase to see data here.";
@@ -184,8 +279,12 @@ function buildTable(purchases){
     newline += purchase.category;
     newline += "</td>";
     // Vendor__________$XX.XX_________Category___________
+    newline += "<td>";
+    newline += purchase.description;
+    newline += "</td>";
+
     newline+="<td>";
-    newline+=purchase.description;
+    newline+=purchase.button;
     newline+="</td>\n</tr>";
     finalStr+=newline;
   } //close for purchase in purchases
