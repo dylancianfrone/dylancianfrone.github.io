@@ -6,7 +6,7 @@
   <body>
     <div class="col left" id="main_left">
 
-      <div class="box" style="height:60vh" id="input_window">
+      <div class="box" style="height:60vh;background-color:#c1e6de;" id="input_window">
         <h1>New Purchase:</h1>
         <h5>Cost must not be blank. All other fields are optional. Negatives are allowed.</h5>
         <form id="new_purchase">
@@ -27,7 +27,7 @@
         <h5 class="error" id="budget_error"><br></h5>
       </div>
 
-      <div class="box" style="height:29vh" id="budget_window">
+      <div class="box" style="height:29vh;background-color:#93bdb5" id="budget_window">
         <h1>Remaining Budget: </h1>
         <h2 id="remaining_budget">$100.00</h2>
         <h3 id="total_budget">Total budget: $100.00</h3>
@@ -51,9 +51,9 @@
     <div class="col right" id="main_right">
       <div class="box" style="height: 93vh" id="list_window_1">
         <h1 style='width:80%;display:inline-block;height:6vh'>Your Purchase List</h1>
-        <button id="detailsPage" style="height:6vh;width:18%">Details</button>
+        <button id="detailsPage" style="height:6vh;width:18%;background:#93bdb5">Details</button>
         <h5 style="display:inline-block"> Sort by: </h5>
-        <button id="time_button_main" class="selector_button">Time</button>
+        <button id="time_button_main" class="selector_button" style="font-weight:bold">Time ↓</button>
         <button id="vendor_button_main" class="selector_button">Vendor</button>
         <button id="cost_button_main" class="selector_button">Cost</button>
         <button id="category_button_main" class="selector_button">Category</button>
@@ -64,8 +64,8 @@
             <input type="hidden" id="budget" name="budget" value=""/>
             <input type="hidden" id="spent" name="spent" value=""/>
           </form>
-
         </div>
+        <button id="reset" style="position:absolute;bottom:6vh;right:2vw;width:4vw;height:4vh;background-color:#a62400;color:#f0f0f0">Reset</button>
       </div>
     </div>
     <div class="col right" style="display:none;" id="details_right">

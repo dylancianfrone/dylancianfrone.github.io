@@ -1,6 +1,9 @@
 purchases = [];
 amountSpent = 0;
 totalBudget = 100;
+down_arrow = '↓';
+up_arrow = '↑';
+defaultSort = true;
 listField = document.getElementById('purchasesField');
 remainingBudgetField = document.getElementById('remaining_budget');
 totalBudgetField = document.getElementById('total_budget');
@@ -20,12 +23,21 @@ costSortMain = document.getElementById('cost_button_main');
 categorySortMain = document.getElementById('category_button_main');
 sortedPurchasesField = document.getElementById('sorted_purchasesField');
 detailsButton = document.getElementById('detailsPage');
+resetButton = document.getElementById('reset')
+
+
 purchaseButton.onclick = function(){
 form = document.getElementById("new_purchase");
 vendor = form.elements[0].value;
 cost = form.elements[1].value;
 category = form.elements[2].value;
 description = form.elements[3].value;
+for(i=0;i<=3;i++){
+  form.elements[i].value = ""
+}
+if(cost.charAt(0) == '$'){
+  cost = cost.replace('$', '');
+}
 cost = parseFloat(cost);
 budgetChanged = 0
 formChanged = 0
@@ -62,10 +74,23 @@ if(!isNaN(cost)){
 }
 }
 
+resetButton.onclick = function(){
+  if(confirm("Reset page? This cannot be undone.")){
+    while(purchases.length > 0){
+      removePurchase(0)
+    }
+    totalBudget = 100
+    amountSpentField.innerHTML = "Amount spent: $0.00"
+    totalBudgetField.innerHTML = "Total budget: $100.00";
+    remainingBudgetField.innerHTML = "$100.00"
+  }
+}
+
 purchaseButton = document.getElementById('budgetSubmit');
 purchaseButton.onclick = function(){
   form = document.getElementById("edit_budget");
   new_budget = parseFloat(form.elements[0].value);
+  form.elements[0].value = ""
   if(!isNaN(new_budget)){
     totalBudget = new_budget;
     amountSpentField.innerHTML = "Amount spent: $"+amountSpent.toFixed(2);
@@ -91,38 +116,104 @@ purchaseButton.onclick = function(){
   }
 }
 costSortMain.onclick = function(){
-  purchasesField.innerHTML=buildTable(getSorted(sortByCost));
-  costSortMain.style.fontWeight = 'bold'
-  vendorSortMain.style.fontWeight = 'normal'
-  categorySortMain.style.fontWeight= 'normal'
-  timeSortMain.style.fontWeight = 'normal'
-  curSort = "cost"
+  default_button_texts();
+  if(costSortMain.style.fontWeight == 'bold'){
+    if(defaultSort){
+      defaultSort = false;
+      listField.innerHTML=buildTable(reverse(getSorted(sortByCost)));
+      costSortMain.innerHTML = 'Cost '+up_arrow
+    } else {
+      defaultSort = true;
+      purchasesField.innerHTML=buildTable(getSorted(sortByCost));
+      costSortMain.innerHTML = 'Cost '+down_arrow
+    }
+  }else{
+    defaultSort = true;
+    purchasesField.innerHTML=buildTable(getSorted(sortByCost));
+    costSortMain.innerHTML = 'Cost '+down_arrow
+    costSortMain.style.fontWeight = 'bold'
+    vendorSortMain.style.fontWeight = 'normal'
+    categorySortMain.style.fontWeight= 'normal'
+    timeSortMain.style.fontWeight = 'normal'
+    curSort = "cost"
+  }
 }
 vendorSortMain.onclick = function(){
-  costSortMain.style.fontWeight = 'normal'
-  vendorSortMain.style.fontWeight = 'bold'
-  categorySortMain.style.fontWeight= 'normal'
-  timeSortMain.style.fontWeight = 'normal'
-  purchasesField.innerHTML=buildTable(getSorted(sortByVendor));
-  curSort = "vendor"
+  default_button_texts();
+  if(vendorSortMain.style.fontWeight == 'bold'){
+    if(defaultSort){
+      defaultSort = false;
+      listField.innerHTML=buildTable(reverse(getSorted(sortByVendor)));
+      vendorSortMain.innerHTML = 'Vendor '+up_arrow
+    } else {
+      defaultSort = true;
+      purchasesField.innerHTML=buildTable(getSorted(sortByVendor));
+      vendorSortMain.innerHTML = 'Vendor '+down_arrow
+    }
+  }else{
+    costSortMain.style.fontWeight = 'normal'
+    vendorSortMain.style.fontWeight = 'bold'
+    categorySortMain.style.fontWeight= 'normal'
+    timeSortMain.style.fontWeight = 'normal'
+    defaultSort = true;
+    vendorSortMain.innerHTML = 'Vendor '+down_arrow
+    purchasesField.innerHTML=buildTable(getSorted(sortByVendor));
+    curSort = "vendor"
+  }
 }
 categorySortMain.onclick = function(){
-  costSortMain.style.fontWeight = 'normal'
-  vendorSortMain.style.fontWeight = 'normal'
-  categorySortMain.style.fontWeight= 'bold'
-  timeSortMain.style.fontWeight = 'normal'
-  purchasesField.innerHTML=buildTable(getSorted(sortByCategory));
-  curSort = "category"
+  default_button_texts();
+  if(categorySortMain.style.fontWeight == 'bold'){
+    if(defaultSort){
+      defaultSort = false;
+      listField.innerHTML=buildTable(reverse(getSorted(sortByCategory)));
+      categorySortMain.innerHTML = 'Category '+up_arrow
+    } else {
+      defaultSort = true;
+      listField.innerHTML=buildTable(getSorted(sortByCategory));
+      categorySortMain.innerHTML = 'Category '+down_arrow
+    }
+  }else{
+    costSortMain.style.fontWeight = 'normal'
+    vendorSortMain.style.fontWeight = 'normal'
+    categorySortMain.style.fontWeight= 'bold'
+    defaultSort = true;
+    listField.innerHTML=buildTable(purchases);
+    categorySortMain.innerHTML = 'Category '+down_arrow
+    timeSortMain.style.fontWeight = 'normal'
+    curSort = "category"
+  }
 }
 timeSortMain.onclick = function(){
-  costSortMain.style.fontWeight = 'normal'
-  vendorSortMain.style.fontWeight = 'normal'
-  timeSortMain.style.fontWeight = 'bold'
-  categorySortMain.style.fontWeight= 'normal'
-  purchasesField.innerHTML=buildTable(purchases);
-  curSort = "time"
+  default_button_texts();
+  if(timeSortMain.style.fontWeight == 'bold'){
+    if(defaultSort){
+      defaultSort = false;
+      listField.innerHTML=buildTable(reverse(purchases));
+      timeSortMain.innerHTML = 'Time '+up_arrow
+    } else {
+      defaultSort = true;
+      listField.innerHTML=buildTable(purchases);
+      timeSortMain.innerHTML = 'Time '+down_arrow
+    }
+  }else{
+    costSortMain.style.fontWeight = 'normal'
+    vendorSortMain.style.fontWeight = 'normal'
+    timeSortMain.style.fontWeight = 'bold'
+    categorySortMain.style.fontWeight= 'normal'
+    defaultSort = true;
+    listField.innerHTML=buildTable(purchases);
+    timeSortMain.innerHTML = 'Time '+down_arrow
+    curSort = "time"
+  }
 }
 
+function default_button_texts(){
+  costSortMain.innerHTML = "Cost"
+  vendorSortMain.innerHTML = "Vendor"
+  timeSortMain.innerHTML = "Time"
+  categorySortMain.innerHTML = "Category"
+}
 
 function swapToDetails(){
   (document.getElementById('main_left')).style.display = 'none';
@@ -260,6 +351,14 @@ function Purchase(vendor, cost, category, description){
     purchase.category = category;
     purchase.description = description;
     return purchase;
+}
+
+function reverse(purchases){
+  rev = []
+  for(i=purchases.length-1;i>=0;i--){
+    rev.push(purchases[i])
+  }
+  return rev
 }
 
 function buildTable(purchases){
