@@ -6,14 +6,14 @@
   <body>
     <div class="col left" id="main_left">
 
-      <div class="box" style="height:69vh;background-color:#c1e6de;" id="input_window">
+      <div class="box" style="height:60vh;background-color:#c1e6de;" id="input_window">
         <h1>New Purchase:</h1>
         <h5>Cost must not be blank. All other fields are optional. Negatives are allowed.</h5>
         <form id="new_purchase">
-          <label for="vendor">Vendor:<br></label><input type="text" id="vendor" name="vendor" placeholder="Where was it bought?"><br>
-          <label for="cost">Cost:<br></label><input type="text" id="cost" name="cost" placeholder="How much did it cost?"><br>
-          <label for="category">Category:<br></label><input type="text" id="category" name="category" placeholder="What type of thing is it?"><br>
-          <label for="description"> Description:<br></label><input type="text" id="description" name="description" placeholder="What is it?"><br>
+          <label for="vendor">Vendor:<br></label><input type="text" id="vendor" name="vendor"><br>
+          <label for="cost">Cost:<br></label><input type="text" id="cost" name="cost"><br>
+          <label for="category">Category:<br></label><input type="text" id="category" name="category"><br>
+          <label for="description"> Description:<br></label><input type="text" id="description" name="description"><br>
         </form>
         <br>
         <button id="purchaseSubmit">Submit</button>
@@ -27,7 +27,7 @@
         <h5 class="error" id="budget_error"><br></h5>
       </div>
 
-      <div class="box" style="height:20vh;background-color:#93bdb5" id="budget_window">
+      <div class="box" style="height:29vh;background-color:#93bdb5" id="budget_window">
         <h1>Remaining Budget: </h1>
         <h2 id="remaining_budget">$100.00</h2>
         <h3 id="total_budget">Total budget: $100.00</h3>
@@ -51,7 +51,7 @@
     <div class="col right" id="main_right">
       <div class="box" style="height: 93vh" id="list_window_1">
         <h1 style='width:80%;display:inline-block;height:6vh'>Your Purchase List</h1>
-        <button id="detailsPage" style="height:6vh;width:18%;background:#93bdb5"><strong><u>Details</u></strong><br><i>Learn more about your spending.</i></button>
+        <button id="detailsPage" style="height:6vh;width:18%;background:#93bdb5">Details</button>
         <h5 style="display:inline-block"> Sort by: </h5>
         <button id="time_button_main" class="selector_button" style="font-weight:bold">Time ↓</button>
         <button id="vendor_button_main" class="selector_button">Vendor</button>

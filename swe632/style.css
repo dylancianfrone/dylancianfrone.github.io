@@ -3,6 +3,40 @@
 
 }
 
+h1 > .left{
+  font-size: 3vh;
+}
+
+h5> .left{
+  font-size: 1.5vh;
+}
+
+p> .left{
+  font-size: 1vh;
+}
+
+form> .left{
+  font-size: 2vh;
+  line-height: 2.2vh;
+}
+
+input{
+  padding: 0.02vw 0.02vh;
+  padding-left:0.25em;
+  line-height: 1.5vh;
+  background-color: #cccccc;
+  font-weight: 700;
+}
+
+input:focus{
+  background-color:white;
+  color: black;
+}
+
+button> .left{
+  font-size: 1.7vh;
+}
+
 .left{
   width: 40%;
   margin-left: 1.25%;
@@ -13,13 +47,56 @@
   margin-left: 2.5%;
 }
 
+.right_overflow{
+  width: 55%;
+  margin-left: 2.5%;
+  margin-bottom:2vh;
+  overflow:scroll;
+}
+
 .box{
   width: 100%;
   display: block;
   margin-bottom: 2vh;
   background-color: #f0f0f0;
   padding: 1vh;
+  line-height: 2.2vh;
 }
+.overflowBox > h1{
+  font-size:3vw;
+}
+.overflowBox{
+  width: 100%;
+  display: block;
+  margin-bottom: 2vh;
+  background-color: #f0f0f0;
+  padding: 1vh;
+  line-height: 2.2vh;
+  overflow:scroll;
+}
+
+.overflowBox > h5{
+  font-size: 1.5vw;
+}
+
+.overflowBox > p{
+  font-size: 1vw;
+}
+
+.overflowBox > form{
+  font-size: 2vw;
+  line-height: 2.2vw;
+}
+
+.overflowBox > input{
+  padding: 0.02vw 0.02vh;
+  line-height: 1.5vw;
+}
+
+.overflowBox >button{
+  font-size: 1.7vw;
+}
+
 
 .selector_button{
   margin-right: 5px;

@@ -1,0 +1,64 @@
+.col{
+  float: left;
+
+}
+
+.left{
+  width: 40%;
+  margin-left: 1.25%;
+}
+
+.right{
+  width: 55%;
+  margin-left: 2.5%;
+}
+
+.box{
+  width: 100%;
+  display: block;
+  margin-bottom: 2vh;
+  background-color: #f0f0f0;
+  padding: 1vh;
+}
+
+.selector_button{
+  margin-right: 5px;
+  display: inline-block;
+}
+
+.error{
+  color: #550000
+}
+
+.success{
+  color: #005500
+}
+
+.overBudget{
+  color: #660000
+}
+/*THIS CODE IS FROM MY CS321 PROJECT*/
+/*I added these in in case we wanted to change the colors for some contrast.
+But, I'm not sure what colors to make them so they're both black for now.*/
+tr:nth-child(even){
+  color: black;
+}
+.table_scroll{
+  width: 100%;
+  height: 75%;
+  overflow-y: auto;
+}
+tr:nth-child(odd){
+  color: black;
+}
+th{
+  text-align: left;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+td{
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 1.1vh;
+  padding-bottom: 1.1vh;
+}

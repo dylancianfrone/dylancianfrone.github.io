@@ -24,33 +24,6 @@ categorySortMain = document.getElementById('category_button_main');
 sortedPurchasesField = document.getElementById('sorted_purchasesField');
 detailsButton = document.getElementById('detailsPage');
 resetButton = document.getElementById('reset')
-budgetWindow = document.getElementById('budget_window')
-inputWindow = document.getElementById('input_window')
-right = document.getElementById('main_right')
-function fixSize(){
-  console.log(window.height)
-  if(window.innerHeight < 890 || window.innerWidth < 700){
-    budgetWindow.className = ('overflowBox')
-    inputWindow.className = ('overflowBox')
-    console.log('overflow')
-  }else{
-    console.log('box')
-    budgetWindow.className = ('box')
-    inputWindow.className = ('box')
-  }
-
-  if(window.innerWidth < 700){
-    right.className = 'right_overflow'
-    right.classList.add('col')
-  } else {
-    right.className = 'right'
-    right.classList.add('col')
-  }
-  console.log(inputWindow.classList)
-
-}
-window.onresize = fixSize;
-fixSize();
 
 
 purchaseButton.onclick = function(){
@@ -70,18 +43,6 @@ budgetChanged = 0
 formChanged = 0
 curSort = "time"
 timeSortMain.style.fontWeight = 'bold'
-if(vendor.includes("<") || category.includes("<") || description.includes("<")){
-  formError.innerHTML = "Error: The \'<\' character is not allowed."
-  formChanged+=1
-  setTimeout(function(){
-    if(formChanged == 1){
-      formError.innerHTML = "<br>"
-      formChanged = 0
-    } else {
-      formChanged-=1
-    }
-  }, 5000)
-} else {
 if(!isNaN(cost)){
     addPurchase(Purchase(vendor, cost, category, description))
     if(timeSortMain.style.fontWeight == 'bold') listField.innerHTML=buildTable(purchases);
@@ -99,7 +60,9 @@ if(!isNaN(cost)){
     }
 } else {
     formError.innerHTML = "Error: Cost must be a number. Try again."
+    console.log("hi")
     formChanged+=1
+
     setTimeout(function(){
       if(formChanged == 1){
         formError.innerHTML = "<br>"
@@ -108,7 +71,6 @@ if(!isNaN(cost)){
         formChanged-=1
       }
     }, 5000)
-}
 }
 }
 
@@ -277,7 +239,10 @@ detailsButton.onclick = function(){
   swapToDetails();
 }
 
-
+mainPageButton = document.getElementById('mainPage');
+mainPageButton.onclick = function(){
+  swapToMain();
+}
 
 function addPurchase(purchase){
   purchase.button = "<button onclick=\"removePurchase("+purchases.length+")\">Remove</button>"
@@ -353,7 +318,7 @@ function removePurchase(index){
 }
 
 function calculatePercentages(purchases){
-  if(purchases.length == 0) return "Make a purchase to see data here.<br/><br/>Press the button in the top-right corner of your screen to return to the previous view.";
+  if(purchases.length == 0) return "Make a purchase to see data here.";
   totalSpent = 0;
   categories = {};
   for(i=0;i<purchases.length;i++){
@@ -368,23 +333,14 @@ function calculatePercentages(purchases){
   } //close for all purchases
   str = "You spent ";
   keys = Object.keys(categories);
-  if(keys.length == 1){
-   if(keys[0] == ""){
-     return "You spent 100% on [no category].<br/><br/>Press the button in the top-right corner of your screen to return to the previous view."
-   } else {
-     return "You spent 100% on "+keys[0]+".<br/><br/>Press the button in the top-right corner of your screen to return to the previous view.";
-   }
- }
+  if(keys.length == 1) return "You spent 100% on "+keys[0]+".";
   for(i=0;i<keys.length;i++){
     proportion = categories[keys[i]]/totalSpent;
     percent = Math.round(proportion*100);
-    key = keys[i]
-    if(key == '') key = '[no category]'
     if(i == 0 && keys.length == 2) str+=(percent+"% on "+keys[i]+" ");
     else if(i != keys.length-1) str+=(percent+"% on "+keys[i]+", ");
     else str+=("and "+percent+"% on "+keys[i]+".");
   }
-  str+="<br/><br/>Press the button in the top-right corner of your screen to return to the previous view."
   return str;
 }
 
